@@ -26,11 +26,10 @@ It needs to be built against [FFTW](https://www.fftw.org/) and [MATLAB](https://
 Assuming you don't already have them, you'll need a C++ compiler, CMake, OpenMP and FFTW.
 
 For Debian-based distributions this should be as simple as
-```{sh}
-$ sudo apt install git gcc cmake libfftw3-dev libgomp1
-```
 
-<!-- TODO: add libhdf5-dev here when updating to v1.1+ -->
+```{sh}
+$ sudo apt install git gcc cmake libfftw3-dev libgomp1 libhdf5-dev
+```
 
 </details>
 
@@ -51,10 +50,8 @@ On an ARM Mac, you will need to install the x86 version of Homebrew:
 ```{sh}
 $ arch -x86_64 zsh
 $ arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-$ arch -x86_64 /usr/local/bin/brew install cmake fftw llvm
+$ arch -x86_64 /usr/local/bin/brew install cmake fftw llvm hdf5
 ```
-
-<!-- TODO (v1.1+) on MacOS it's just hdf5 as an argument to brew -->
 
 </details>
 
@@ -71,9 +68,7 @@ This has been tested Windows 10 and 11, with PowerShell.
 
 Assuming you don't already have them, you'll need to download and install:
 
-<!-- when updating to version 1.1+, uncomment
-
-* [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5+CPP+Reference+Manuals) -->
+* [HDF5](https://portal.hdfgroup.org/display/HDF5/HDF5+CPP+Reference+Manuals)
 * [MATLAB](https://www.mathworks.com/products/matlab.html),
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/) and **be sure to select the C++ developer kit**,
 * [CMake](https://cmake.org/download/),
@@ -85,22 +80,21 @@ You can check that the Visual Studio compiler was installed with:
 PS> MSBuild.exe -h
 ```
 
-Potentially the simplest way to get FFTW is via [conda](https://anaconda.org/conda-forge/fftw):
-
+Potentially the simplest way to get FFTW and HDF5 is via [conda](https://anaconda.org/conda-forge/fftw):
 
 ```{pwsh}
-PS> conda install -c conda-forge fftw --yes
+PS> conda install -c conda-forge fftw hdf5 --yes
 ```
-
-<!-- TODO: add HDF5 👆 here when updating to v1.1+ probably also via conda is the easiest -->
 
 You'll need to ensure the paths to FFTW and MATLAB (the locations of `fftw3.dll` and `libmex.dll` respectively) are in the `env:Path`.
 
 These can be found, e.g. by
+
 ```{pwsh}
 PS> conda list fftw # assuming you installed via conda
 PS> which.exe MATLAB
 ```
+
 Which should return something like `C:\Program Files (x86)\MATLAB\R20XXx\bin\matlab` and maybe `C:\ProgramData\envs\base\bin`.
 If you downloaded FFTW and created `fftw3.dll` with `lib.exe`, you just need to know where you saved it.
 
@@ -142,12 +136,11 @@ $ cmake ../tdms \
 $ # -DMatlab_ROOT_DIR=/usr/local/MATLAB/R20XXx/ \
 $ # -DFFTW_ROOT=/usr/local/fftw3/ \
 $ # -DCMAKE_INSTALL_PREFIX=$HOME/.local/
+$ # -DHDF5_ROOT=/usr/include/hdf5/ \
 $ cmake --build . --target install --config Release
 ```
 
-If CMake cannot find MATLAB, FFTW, or install to the default installation prefix, uncomment the relevant line(s) and modify the path(s) accordingly.
-
-<!-- TODO: add HDF5 when updating to v1.1+ -->
+If CMake cannot find MATLAB, FFTW, HDF5, or install to the default installation prefix, uncomment the relevant line(s) and modify the path(s) accordingly.
 
 You can check that `tdms` was installed correctly and is in your `PATH` by running:
 ```{sh}
