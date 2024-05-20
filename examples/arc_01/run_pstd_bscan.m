@@ -4,7 +4,8 @@ beam of light due to the presence of a cylindrical scatterer.
 
 This script should be run via MATLAB from the examples/arc_01 directory.
 
-In this script, we setup two simulations over the same grid and with the same source, a pulsed beam of light incident from the K0-plane:
+In this script, we setup two simulations over the same grid and with the same source,
+a pulsed beam of light incident from the K0-plane:
 - One simulation has no scatterer in the path of the beam (freespace
 obstacle)
 - The other simulation has a cylindrical (or since this is 2D, circular)

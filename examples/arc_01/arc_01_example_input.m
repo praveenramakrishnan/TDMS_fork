@@ -147,7 +147,7 @@ n = 4;
 % Maximum reflection at PML
 R0 = 1e-7;
 
-% Parameter mimicing the conductivity profile in the PML, applicable to dispersive materials only.
+% Parameter mimicking the conductivity profile in the PML, applicable to dispersive materials only.
 % See the documentation PDF, section 3.2.6.
 kappa_max = 1;
 
