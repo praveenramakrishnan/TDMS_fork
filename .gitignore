@@ -25,3 +25,6 @@ tdms/tests/unit/benchmark_scripts/unit_test_data/**
 
 # MacOS
 **.DS_store
+
+# data files
+*artefacts*
